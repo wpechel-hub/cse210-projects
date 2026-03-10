@@ -6,12 +6,12 @@ class Program
     {
         DisplayWelcomeMsg();
 
-        string userName = PromptUserName();
-        int userNumber = PromptUserNumber();
+        string userName = userNames();
+        int userNumber = userNumbers();
 
-        int squaredNumber = SquareNumber(userNumber);
+        int sNumber = sqNumber(userNumber);
 
-        DisplayResult(userName, squaredNumber);
+        DisplayResult(userName, sNumber);
     }
 
     static void DisplayWelcomeMsg()
@@ -19,7 +19,7 @@ class Program
         Console.WriteLine("Welcome to the program!");
     }
 
-    static string PromptUserName()
+    static string userNames()
     {
         Console.Write("Please enter your name: ");
         string name = Console.ReadLine();
@@ -27,7 +27,7 @@ class Program
         return name;
     }
 
-    static int PromptUserNumber()
+    static int userNumbers()
     {
         Console.Write("Please enter your favorite number: ");
         int number = int.Parse(Console.ReadLine());
@@ -35,7 +35,7 @@ class Program
         return number;
     }
 
-    static int SquareNumber(int number)
+    static int sqNumber(int number)
     {
         int square = number * number;
         return square;
