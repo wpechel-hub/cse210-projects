@@ -30,26 +30,25 @@ class Program
 
                 string date = DateTime.Now.ToShortDateString();
 
-                Entry entry = new Entry();
-                entry._date = date;
-                entry._promptText = prompt;
-                entry._entryText = response;
+                Entry entry = new Entry
+                {
+                    Date = date,
+                    PromptText = prompt,
+                    EntryText = response
+                };
 
                 journal.AddEntry(entry);
             }
-
             else if (choice == 2)
             {
                 journal.DisplayAll();
             }
-
             else if (choice == 3)
             {
                 Console.Write("File name: ");
                 string file = Console.ReadLine();
                 journal.LoadFromFile(file);
             }
-
             else if (choice == 4)
             {
                 Console.Write("File name: ");

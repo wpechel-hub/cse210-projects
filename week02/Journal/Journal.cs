@@ -4,16 +4,16 @@ using System.IO;
 
 public class Journal
 {
-    public List<Entry> _entries = new List<Entry>();
+    public List<Entry> Entries { get; set; } = new List<Entry>();
 
     public void AddEntry(Entry entry)
     {
-        _entries.Add(entry);
+        Entries.Add(entry);
     }
 
     public void DisplayAll()
     {
-        foreach (Entry entry in _entries)
+        foreach (Entry entry in Entries)
         {
             entry.Display();
         }
@@ -23,9 +23,9 @@ public class Journal
     {
         using (StreamWriter outputFile = new StreamWriter(file))
         {
-            foreach (Entry entry in _entries)
+            foreach (Entry entry in Entries)
             {
-                outputFile.WriteLine($"{entry._date}|{entry._promptText}|{entry._entryText}");
+                outputFile.WriteLine($"{entry.Date}|{entry.PromptText}|{entry.EntryText}");
             }
         }
     }
@@ -34,18 +34,20 @@ public class Journal
     {
         string[] lines = File.ReadAllLines(file);
 
-        _entries.Clear();
+        Entries.Clear();
 
         foreach (string line in lines)
         {
-            string[] parts = line.Split("|");
+            string[] parts = line.Split('|');
 
-            Entry entry = new Entry();
-            entry._date = parts[0];
-            entry._promptText = parts[1];
-            entry._entryText = parts[2];
+            Entry entry = new Entry
+            {
+                Date = parts[0],
+                PromptText = parts[1],
+                EntryText = parts[2]
+            };
 
-            _entries.Add(entry);
+            Entries.Add(entry);
         }
     }
 }

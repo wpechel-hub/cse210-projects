@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class PromptGenerator
 {
-    public List<string> _prompts = new List<string>()
+    public List<string> Prompts { get; set; } = new List<string>()
     {
         "Who was the most interesting person I interacted with today?",
         "What was the best part of my day?",
@@ -19,13 +19,13 @@ public class PromptGenerator
         "What act of kindness did I give or receive today?",
         "What surprised me the most today?",
         "What is one thing I would like to improve tomorrow?",
-        "What memory from today do I want to remember in the future?",   
+        "What memory from today do I want to remember in the future?"
     };
 
     public string GetRandomPrompt()
     {
         Random random = new Random();
-        int index = random.Next(_prompts.Count);
-        return _prompts[index];
+        int index = random.Next(Prompts.Count);
+        return Prompts[index];
     }
 }
